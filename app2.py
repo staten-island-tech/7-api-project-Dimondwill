@@ -1,7 +1,39 @@
 import requests
+import random
+import tkinter as tk
 
-def Munster():
-    res = requests.get(f"https://www.dnd5eapi.co/api/2014/monsters")
+def submit_name():
+    # Get the value from the entry widget
+    name = name_entry.get()
+    # Display the name in the label
+    result_label.config(text=f"Hello, {name}! we shall now start your wizarding journy;")
+
+# Create the main window
+root = tk.Tk()
+root.title("Name Input App")
+root.geometry("300x150")
+
+# Create a label
+prompt_label = tk.Label(root, text="Enter your name:")
+prompt_label.pack(pady=5)
+
+# Create an entry widget
+name_entry = tk.Entry(root, width=25)
+name_entry.pack(pady=5)
+
+# Create a button to submit
+submit_button = tk.Button(root, text="Submit", command=submit_name)
+submit_button.pack(pady=5)
+
+# Create a label to show the result
+result_label = tk.Label(root, text="")
+result_label.pack(pady=5)
+
+# Run the application
+root.mainloop()
+'''
+def Munster(mon):
+    res = requests.get(f"https://www.dnd5eapi.co/api/2014/monsters/{mon}")
 
     if res.status_code != 200:
         print("Error fetching data!")
@@ -13,5 +45,5 @@ def Munster():
         "index": data["index"],
         "url": data["url"]
     }
-m = Munster("aboleth")
-print(m)
+m = Munster("acolyte")
+print(m)'''
