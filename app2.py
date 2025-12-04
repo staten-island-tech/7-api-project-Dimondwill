@@ -2,6 +2,7 @@ import requests
 import random
 import tkinter as tk
 
+'''
 def submit_name():
     # Get the value from the entry widget
     name = name_entry.get()
@@ -32,8 +33,9 @@ result_label.pack(pady=5)
 # Run the application
 root.mainloop()
 '''
+
 def Munster(mon):
-    res = requests.get(f"https://www.dnd5eapi.co/api/2014/monsters/{mon}")
+    res = requests.get(f"https://api.open5e.com/v2/creatures/{mon.lower}")
 
     if res.status_code != 200:
         print("Error fetching data!")
@@ -41,9 +43,9 @@ def Munster(mon):
 
     data = res.json()
     return {
-        "name": data["name"],
-        "index": data["index"],
+        "name": data("name"),
+        "key": data["key"],
         "url": data["url"]
     }
-m = Munster("acolyte")
-print(m)'''
+m = Munster("Aboleth")
+print(m)
