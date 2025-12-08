@@ -2,12 +2,13 @@ import requests
 import random
 import tkinter as tk
 
-'''
+
 def submit_name():
     # Get the value from the entry widget
+    global name
     name = name_entry.get()
     # Display the name in the label
-    result_label.config(text=f"Hello, {name}! we shall now start your wizarding journy;")
+    result_label.config(text=f" and now we go on {name}'s journey")
 
 # Create the main window
 root = tk.Tk()
@@ -32,10 +33,60 @@ result_label.pack(pady=5)
 
 # Run the application
 root.mainloop()
-'''
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+'''
 def Munster(mon):
-    res = requests.get(f"https://api.open5e.com/v2/creatures/{mon.lower}")
+    res = requests.get(f"https://api.open5e.com/monsters/{mon.lower}")
 
     if res.status_code != 200:
         print("Error fetching data!")
@@ -43,9 +94,10 @@ def Munster(mon):
 
     data = res.json()
     return {
-        "name": data("name"),
-        "key": data["key"],
-        "url": data["url"]
+        "name": data("Name"),
+        "type": data["Type"],
+        "Challenge level": data["CR"]
     }
 m = Munster("Aboleth")
 print(m)
+'''
